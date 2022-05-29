@@ -1,0 +1,42 @@
+<block wx:if="{{ userInfoStatus == 1 }}">
+    <view class="login-box">
+        <image class="logo" src="/images/wx.jpg" mode="widthFix"></image>
+        <view class="line"></view>
+        <view class="title">申请获取以下权限</view>
+        <view class="profile">获得你的公开信息(昵称，头像等)</view>
+        <view class="btn">
+            <van-button type="primary" block round bind:click="updateUserInfo">微信一键登录</van-button>
+        </view>
+    </view>
+</block>
+<block wx:else="">
+    <view class="header-box">
+        <image class="avatar" src="{{ userinfo.avatarUrl }}" mode="aspectFill"></image>
+        <view class="r">
+            <view class="uid">用户ID: {{ userinfo.id }}</view>
+            <view class="nick">{{ userinfo.nickName }}</view>
+        </view>
+        <view class="mine_title_button">我的时光邮局</view>
+    </view>
+</block>
+<view class="mine">
+    <view class="mine_title">
+        <view class="mine_title_portrait">
+            <view class="mine_title_portrait-top">
+                <image src="{{userinfo.avatarUrl}}"></image>
+                <view>{{userinfo.nickName}}</view>
+            </view>
+        </view>
+        <view class="mine_title_button">我的时光邮局</view>
+    </view>
+</view>
+<view class="add_Mask" wx:if="{{maskshow}}">
+    <view class="add_Mask_content">
+        <view class="add_Mask_content_top">修改Ta</view>
+        <view class="add_Mask_content_cont">是否确认修改Ta？如果确认，双方将清空所有信息，请提前备份</view>
+        <view class="add_Mask_content_button">
+            <view class="add_Mask_content_button_config" bindtap="updateTa">确认修改</view>
+            <view class="add_Mask_content_button_cancel" bindtap="offMask">放弃修改</view>
+        </view>
+    </view>
+</view>
