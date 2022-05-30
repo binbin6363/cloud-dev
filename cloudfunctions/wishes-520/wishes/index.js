@@ -24,6 +24,8 @@ exports.createWishes = async (event, context) => {
           title: item.title, // 愿望 title
           content: item.content, // 愿望 content
           finish: false, // 是否完成，初始时 flase
+          triggleTime: item.triggleTime, // 触发发送时间
+          emailAddr: item.emailAddr, // email地址
           share: item.share, // 是否分享
         }
       })
@@ -119,6 +121,8 @@ exports.updateWish = async (event, context) => {
         updateTime: new Date(), // 修改时间
         title:title, // 愿望 title
         content:content, // 愿望 content
+        triggleTime: item.triggleTime, // 触发发送时间
+        emailAddr: item.emailAddr, // email地址
         share:share, // 是否分享
       },
     })

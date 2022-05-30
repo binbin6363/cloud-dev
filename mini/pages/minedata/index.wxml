@@ -5,7 +5,7 @@
         <view class="title">申请获取以下权限</view>
         <view class="profile">获得你的公开信息(昵称，头像等)</view>
         <view class="btn">
-            <van-button type="primary" block round bind:click="updateUserInfo">微信一键登录</van-button>
+            <button type="primary" block round bindtap="updateUserInfo">微信一键登录</button>
         </view>
     </view>
 </block>
@@ -16,20 +16,9 @@
             <view class="uid">用户ID: {{ userinfo.id }}</view>
             <view class="nick">{{ userinfo.nickName }}</view>
         </view>
-        <view class="mine_title_button">我的时光邮局</view>
     </view>
+    <view class="mine_title_button">我的时光邮局</view>
 </block>
-<view class="mine">
-    <view class="mine_title">
-        <view class="mine_title_portrait">
-            <view class="mine_title_portrait-top">
-                <image src="{{userinfo.avatarUrl}}"></image>
-                <view>{{userinfo.nickName}}</view>
-            </view>
-        </view>
-        <view class="mine_title_button">我的时光邮局</view>
-    </view>
-</view>
 <view class="add_Mask" wx:if="{{maskshow}}">
     <view class="add_Mask_content">
         <view class="add_Mask_content_top">修改Ta</view>

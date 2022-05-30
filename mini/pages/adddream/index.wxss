@@ -25,6 +25,14 @@
     text-align: left;
     color: #1485EE;
 }
+.add_triggle_time{
+    margin-left: 62rpx;
+    font-size: 19px;
+    font-family: PingFangSC-regular;
+    width: 600rpx;
+    text-align: left;
+    color: #1485EE;  
+}
 .add_content{
     width: 680rpx;
     height: 700rpx;

@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userInfoStatus: 1,
         userinfo: wx.getStorageSync('user'),
         openid: wx.getStorageSync('userOpenid'),
         datalist: "",
@@ -128,6 +129,28 @@ Page({
     onPullDownRefresh() {
         this.getMyInvite();
     },
+    updateUserInfo(e) {
+        const that = this;
 
+        wx.getUserProfile({
+          lang: 'zh_CN',
+          desc: '用于完善会员资料',
+          success: res => {
+            that.setData({
+                userinfo: res.userInfo,
+                userInfoStatus: 0,
+            })
+            wx.setStorageSync('user', res.userInfo)
+          },
+          fail: err => {
+            console.log(err);
+            wx.showToast({
+              title: err.errMsg,
+              icon: 'none'
+            })
+          }
+        })
+        
+      },
 
 })

@@ -2,22 +2,32 @@
 <view class="add">
     <view class="add_title">
         <view class="add_title_size">标题</view>
-        <input bindinput="inputTitle" disabled="{{contentshow=='true'? false : true}}" class="add_title_inp" placeholder="邮件标题" value="{{title}}" type="text"/>
+        <input bindinput="inputTitle" disabled="{{contentshow=='true'? false : true}}" class="add_title_inp" placeholder="邮件标题" value="{{title}}" type="text" />
     </view>
     <view class="add_content">
         <view class="add_content_title">邮件正文</view>
         <view class="add_content_main">
-            <textarea disabled="{{contentshow=='true'? false : true}}" class="add_content_main_text" bindblur="bindinput" placeholder="{{textarea}}" value="{{value}}" maxlength="-1"/>
+            <textarea disabled="{{contentshow=='true'? false : true}}" class="add_content_main_text" bindblur="bindinput" placeholder="{{textarea}}" value="{{value}}" maxlength="-1" />
         </view>
     </view>
     <view class="add_title" wx:if="{{contentshow=='true'}}">
         <view class="add_title_size">收件人</view>
         <view>
-        <input bindinput="inputEmailAddr" disabled="{{contentshow=='true'? false : true}}" class="add_title_inp" placeholder="收件人邮件地址" value="{{email_addr}}" type="text"/></view>
+            <input bindinput="bindEmailAddr" class="add_title_inp" placeholder="收件人邮件地址" value="{{emailAddr}}" type="text" />
+        </view>
     </view>
-    <view class="add_title" wx:if="{{contentshow=='true'}}">
+    <view class="add_title">
         <view class="add_title_size">是否公开</view>
-        <view class="add_title_switch"><switch color="rgba(24, 144, 255, 100)" checked="{{switchvalue}}" bindchange="switch1Change"/></view>
+        <view class="add_title_switch">
+            <switch color="rgba(24, 144, 255, 100)" checked="{{switchvalue}}" bindchange="switch1Change" />
+        </view>
+    </view>
+    <view>
+        <picker mode="date" value="{{triggleTime}}" bindchange="bindDateChange">
+            <view class="add_triggle_time">
+                选择投递时间 {{triggleTime}}
+            </view>
+        </picker>
     </view>
     <view class="add_button" bindtap="createWishes" wx:if="{{contentshow=='true'&&modifyshow=='true'}}">
         投递邮局

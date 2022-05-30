@@ -20,12 +20,17 @@ Page({
         title: "",
         recipientId: "",
         userOpenid: "",
+        triggleTime: "",
+        emailAddr: "",
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        if (!options) {
+            return
+        }
         if (options.data) {
             this.setData({
                 dataList: JSON.parse(options.data),
@@ -38,6 +43,8 @@ Page({
             id: options.id || false,
             value: this.data.dataList.content || "",
             title: this.data.dataList.title || "",
+            triggleTime: this.data.dataList.triggleTime || "",
+            emailAddr: this.data.dataList.emailAddr || "",
             switchvalue: this.data.dataList.share || "",
             recipientId: wx.getStorageSync('recipientId'),
         })
@@ -59,6 +66,9 @@ Page({
                     _id: this.data.id,
                     title: this.data.title,
                     content: this.data.value,
+                    emailAddr: this.data.emailAddr,
+                    triggleTime: this.data.triggleTime,
+                    content: this.data.value,
                     share: this.data.switchvalue,
                 }
             })
@@ -76,7 +86,7 @@ Page({
             }
         } catch (error) {
             wx.showToast({
-                title: '修改失败，请重试',
+                title: '更新失败，请重试',
                 icon: 'success',
                 duration: 2000
             })
@@ -132,6 +142,8 @@ Page({
                             title: this.data.title,
                             content: this.data.value,
                             share: this.data.switchvalue,
+                            triggleTime: this.data.triggleTime,
+                            emailAddr: this.data.emailAddr,
                         }]
                     }
                 })
@@ -140,7 +152,7 @@ Page({
                 })
             } catch (error) {
                 wx.showToast({
-                    title: '许愿失败，请重试',
+                    title: '投递失败，请重试',
                     icon: 'error',
                     duration: 2000
                 })
@@ -198,6 +210,16 @@ Page({
     bindinput(e) {
         this.setData({
             value: e.detail.value
+        })
+    },
+    bindEmailAddr(e) {
+        this.setData({
+            emailAddr: e.detail.value
+        })
+    },
+    bindDateChange(e) {
+        this.setData({
+            triggleTime: e.detail.value
         })
     },
     /**

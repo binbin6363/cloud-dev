@@ -1,4 +1,4 @@
-const envList = [{"envId":"rankoa-b45487","alias":"rankoa"},{"envId":"product-lgx3b","alias":"product"}]
+const envList = [{"envId":"product-lgx3b","alias":"product"},{"envId":"rankoa-b45487","alias":"rankoa"}]
 const isMac = true
 module.exports = {
     envList,

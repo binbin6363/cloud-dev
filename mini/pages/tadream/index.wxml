@@ -13,11 +13,9 @@
     </view>
     <view class="tadream-nomain" wx:if="{{!msgList.length>0&&!recipientId}}">
         <image src="../../image/09.png"></image>
-        <image src="../../image/09size.png"></image>
     </view>
     <view class="notdata" wx:if="{{!msgList.length>0&&recipientId}}">
         <image src="../../image/08.png"></image>
-        <view>Ta暂未分享愿望 邀请一起参与</view>
     </view>
     <view bindtap="borshow" class="tadream_add" wx:if="{{msgList.length>0}}"></view>
 </view>
